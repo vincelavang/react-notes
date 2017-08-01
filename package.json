@@ -1,0 +1,36 @@
+{
+  "name": "react-notes",
+  "version": "1.0.0",
+  "description": "react-notes is a web app for JS developers want to save notes about what they've learned",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "bundle": "browserify -t babelify index.js > main.js",
+    "bundle:watch": "watchify -vd -t babelify index.js -o main.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vincelavang/react-notes.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vincelavang/react-notes/issues"
+  },
+  "homepage": "https://github.com/vincelavang/react-notes#readme",
+  "devDependencies": {
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.24.1",
+    "babel-plugin-transform-react-jsx": "^6.24.1",
+    "babelify": "^7.3.0",
+    "browserify": "^14.4.0",
+    "watchify": "^3.9.0"
+  },
+  "dependencies": {
+    "express": "^4.15.3",
+    "knex": "^0.13.0",
+    "pg": "^7.0.2",
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1"
+  }
+}
