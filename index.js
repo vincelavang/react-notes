@@ -1,17 +1,27 @@
 const express = require('express')
+const app = express()
+const bodyParser = require('body-parser')
+const jsonParser = bodyParser.json()
 
 const knex = require('knex')({
     dialect: 'pg',
     connection: 'postgres://localhost:5432/react-notes'
   })
 
-const query = knex
-  .insert({ note_text: 'this is a test, notes inserting into db.' })
-  .into('notes')
+app.use(jsonParser)
 
-console.log(query.toString())
+app.get('/notes', function (req, res) {
+  const query = knex
+    .select()
+    .from('notes')
+  console.log(query.toString())
+  query
+    .then((notes) => {
+      console.log(notes)
+      res.json(notes)
+    })
+})
 
-query
-  .then(() => {
-  console.log('done!')
-  })
+app.listen(3000, () => {
+  console.log('Listening on port 3000!')
+})
