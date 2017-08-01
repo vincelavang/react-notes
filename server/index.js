@@ -2,6 +2,8 @@ const express = require('express')
 const app = express()
 const bodyParser = require('body-parser')
 const jsonParser = bodyParser.json()
+const publicPath = path.join(__dirname, 'public')
+const staticMiddleware = express.static(publicPath)
 
 const knex = require('knex')({
     dialect: 'pg',
@@ -21,6 +23,8 @@ app.get('/notes', function (req, res) {
       res.json(notes)
     })
 })
+
+app.use(staticMiddleware)
 
 app.listen(3000, () => {
   console.log('Listening on port 3000!')
