@@ -25,6 +25,21 @@ app.get('/notes', function (req, res) {
     })
 })
 
+app.post('/notes', function (req, res) {
+  const note = {
+    note_text: req.body.note_text
+  }
+  const query = knex
+    .insert(note)
+    .into('notes')
+    .returning('*')
+  query
+    .then((note) => {
+      res.json(note[0])
+      console.log('done!')
+    })
+})
+
 app.use(staticMiddleware)
 
 app.listen(3000, () => {
