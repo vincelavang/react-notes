@@ -49,7 +49,7 @@ app.delete('/notes/:id', function (req, res) {
     console.log(query.toString())
   query
     .then((response) => {
-      console.log('done!')
+      res.sendStatus(200)
     })
   })
 
