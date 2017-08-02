@@ -8,6 +8,18 @@ export default class Form extends React.Component {
       text: formData.get('text')
     })
     console.log(json)
+    const note = {note_text: formData.get('text')}
+    fetch('/notes', {
+    method: 'POST',
+    headers: {
+      'content-type': 'application/json'
+    },
+    body: JSON.stringify(note)
+  })
+  .then(res => res.json())
+  .then(newNote => {
+    console.log(newNote)
+  })
   }
   render() {
     return (
