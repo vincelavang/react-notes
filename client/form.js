@@ -18,12 +18,12 @@ export default class Form extends React.Component {
   })
   .then(res => res.json())
   .then(newNote => {
-    console.log(newNote)
+    this.props.onNoteAdded(newNote)
   })
   }
   render() {
     return (
-      <form onSubmit={ this.handleSubmit }>
+      <form onSubmit={ this.handleSubmit.bind(this) }>
         <div className='ui form'>
           <div className='field'>
             <div className='ui card blue label'>
@@ -37,8 +37,7 @@ export default class Form extends React.Component {
             </div>
           </div>
         </div>
-
-    </form>
+      </form>
     )
   }
 }
