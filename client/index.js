@@ -1,27 +1,19 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
+import Notes from '../client/notes'
+import Form from '../client/form'
 
 const $app = document.querySelector('#app')
 
-function Note(props) {
-  const { note } = props
-  return (
-      <div className='ui card blue label'>
-        <div className='content'>
-          <div className='header'>{note.id}</div>
-          <div className='meta'>Notes</div>
-          <div className='description'>{note.note_text}</div>
-        </div>
-      </div>
-  )
-}
-
-class Notes extends React.Component {
+class Main extends React.Component {
   constructor(props) {
     super(props)
     this.state = {notes: []}
   }
-
+  addNote(note) {
+  const newState = this.state.notes.concat(note)
+  this.setState({notes: newState})
+  }
   async componentDidMount() {
       const response = await fetch('/notes')
       const notes = await response.json()
@@ -30,10 +22,14 @@ class Notes extends React.Component {
   render() {
     return (
       <div>
-        {this.state.notes.map((note, i) => <Note key={i} note={note} />)}
+        <div>
+          <Notes notes={this.state.notes} />
+          <br></br>
+          <Form onNoteAdded={ this.addNote.bind(this) } />
+        </div>
       </div>
     )
   }
 }
 
-ReactDOM.render(<Notes />, $app)
+ReactDOM.render(<Main />, $app)
