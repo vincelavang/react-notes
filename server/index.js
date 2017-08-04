@@ -56,6 +56,6 @@ app.delete('/notes/:id', function (req, res) {
 
 app.use(staticMiddleware)
 
-app.listen(3000, () => {
-  console.log(process.env.MY_SECRET)
+app.listen(process.env.PORT, () => {
+  console.log(process.env.PORT)
 })
