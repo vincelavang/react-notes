@@ -26,11 +26,13 @@
     "browserify": "^14.4.0",
     "chai": "^4.1.0",
     "mocha": "^3.5.0",
+    "pg-bump": "^1.0.3",
     "request": "^2.81.0",
     "watchify": "^3.9.0"
   },
   "dependencies": {
     "body-parser": "^1.17.2",
+    "dotenv": "^4.0.0",
     "express": "^4.15.3",
     "knex": "^0.13.0",
     "pg": "^7.0.2",
