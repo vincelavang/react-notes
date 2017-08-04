@@ -56,5 +56,5 @@ app.delete('/notes/:id', function (req, res) {
 app.use(staticMiddleware)
 
 app.listen(3000, () => {
-  console.log('Listening on port 3000!')
+  console.log(process.env.MY_SECRET)
 })
