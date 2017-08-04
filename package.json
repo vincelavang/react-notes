@@ -4,7 +4,8 @@
   "description": "react-notes is a web app for JS developers want to save notes about what they've learned",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "mocha test/",
+    "tdd": "mocha test/ -w -R min",
     "bundle": "browserify -t babelify client/index.js > server/public/main.js",
     "bundle:watch": "watchify -vd -t babelify client/index.js -o server/public/main.js"
   },
