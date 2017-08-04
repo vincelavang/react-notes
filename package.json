@@ -6,7 +6,12 @@
   "scripts": {
     "tdd": "mocha test/ -w -R min",
     "bundle": "browserify -t babelify client/index.js > server/public/main.js",
-    "bundle:watch": "watchify -vd -t babelify client/index.js -o server/public/main.js"
+    "bundle:watch": "watchify -vd -t babelify client/index.js -o server/public/main.js",
+    "db:make": "pg-bump create",
+    "db:up": "pg-bump up",
+    "db:down": "pg-bump down",
+    "db:status": "pg-bump status",
+    "db:rebuild": "pg-bump down && pg-bump up"
   },
   "repository": {
     "type": "git",
