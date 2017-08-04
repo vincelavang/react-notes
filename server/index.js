@@ -40,6 +40,19 @@ app.post('/notes', function (req, res) {
     })
 })
 
+app.delete('/notes/:id', function (req, res) {
+  const query = knex
+    .where('id', req.params.id)
+    .from('notes')
+    .delete()
+
+    console.log(query.toString())
+  query
+    .then((response) => {
+      res.sendStatus(200)
+    })
+  })
+
 app.use(staticMiddleware)
 
 app.listen(3000, () => {
