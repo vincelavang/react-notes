@@ -5,10 +5,11 @@ const bodyParser = require('body-parser')
 const jsonParser = bodyParser.json()
 const publicPath = path.join(__dirname, 'public')
 const staticMiddleware = express.static(publicPath)
+const dotenv = require('dotenv').config()
 
 const knex = require('knex')({
     dialect: 'pg',
-    connection: 'postgres://localhost:5432/react-notes'
+    connection: process.env.DATABASE_URL
   })
 
 app.use(jsonParser)
