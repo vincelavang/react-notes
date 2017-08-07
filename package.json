@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "react-notes is a web app for JS developers want to save notes about what they've learned",
   "main": "index.js",
+  "engines": {
+    "node": "8.2.1"
+  },
   "scripts": {
     "tdd": "mocha test/ -w -R min",
     "bundle": "browserify -t babelify client/index.js > server/public/main.js",
@@ -12,9 +15,8 @@
     "db:down": "pg-bump down",
     "db:status": "pg-bump status",
     "db:rebuild": "pg-bump down && pg-bump up",
-    "engines": {
-      "node": "8.2.1"
-    }
+    "postinstall": "bundle",
+    "heroku-postbuild": "npm run db:up"
   },
   "repository": {
     "type": "git",
